@@ -12,6 +12,12 @@
     2. canvas-setup.js
     3. main.js
 
+* Importante para examen
+    1. js modulados
+    2. canvas
+    3. .md bien estructurado
+    4. favicon.ico
+
 <!-- Negrita -->
 **Autor**: Alvaro Fonseca Hernandez
 
