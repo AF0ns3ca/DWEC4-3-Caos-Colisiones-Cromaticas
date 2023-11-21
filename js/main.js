@@ -75,13 +75,13 @@ class Ball {
       if (!(this === ball)) {
         const dx = this.x - ball.x;
         const dy = this.y - ball.y;
-      }
 
-      //Metodo posiblemente cambiado en el examen
-      //Metodo de colision detectada
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      if (distance < this.size + ball.size) {
-        ball.color = this.color = randomRGB();
+        //Metodo posiblemente cambiado en el examen
+        //Metodo de colision detectada
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance < this.size + ball.size) {
+          ball.color = this.color = randomRGB();
+        }
       }
     }
   }
@@ -89,26 +89,26 @@ class Ball {
 
 const balls = [];
 
-while (balls.length < 25) {
-    const size = random(10,20);
-    const ball = new Ball(
-        //Generar la posicion en x de forma aleatoria para esta bola en nuestro lienzo, toda esta linea es el valor x del objeto
-        random(0 + size, width - size),
-        //Posicion y
-        random(0 + size, height - size),
-        //Velocidad x (Se establece aleatoriamente entre -7 y 7)
-        random(-7,7),
-        //Velociad y (Se establece aleatoriamente entre -7 y 7)
-        random(-7,7),
-        //color
-        randomRGB(),
-        //size
-        size
-    );
+while (balls.length < 75) {
+  const size = random(10, 20);
+  const ball = new Ball(
+    //Generar la posicion en x de forma aleatoria para esta bola en nuestro lienzo, toda esta linea es el valor x del objeto
+    random(0 + size, width - size),
+    //Posicion y
+    random(0 + size, height - size),
+    //Velocidad x (Se establece aleatoriamente entre -7 y 7)
+    random(-7, 7),
+    //Velociad y (Se establece aleatoriamente entre -7 y 7)
+    random(-7, 7),
+    //color
+    randomRGB(),
+    //size
+    size
+  );
 
-    balls.push(ball);
+  balls.push(ball);
 
-    /*
+  /*
     const x = random(0 + size, width - size);
     const y = random(0 + size, height - size);
     const velx = random(-7,7);
@@ -122,21 +122,20 @@ while (balls.length < 25) {
 //QUiza va en otro archivo
 //Funcion que define el bucle principal del programacion
 const loop = () => {
-    //Asi añadimos el color al contexto, un fondo negro semitransparente
-    ctx.fillStyle = 'rgba(0,0,0,0.25)';
-    //Definimos el tamaño del contexto
-    ctx.fillRect(0, 0, width, height);
+  //Asi añadimos el color al contexto, un fondo negro semitransparente
+  ctx.fillStyle = "rgba(0,0,0,0.25)";
+  //Definimos el tamaño del contexto
+  ctx.fillRect(0, 0, width, height);
 
-    //bucle que dibuja las bolas en el contexto
-    for(const ball of balls){
-        ball.draw();
-        ball.update();
-        ball.collisionDetect();
-    }
+  //bucle que dibuja las bolas en el contexto
+  for (const ball of balls) {
+    ball.draw();
+    ball.update();
+    ball.collisionDetect();
+  }
 
-    //Metodo propio parecido al addeventlistener pero aplicado a un contexto de canvas en 2d
-    requestAnimationFrame(loop);
+  //Metodo propio parecido al addeventlistener pero aplicado a un contexto de canvas en 2d
+  requestAnimationFrame(loop);
 };
 
 loop();
-
